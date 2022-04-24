@@ -12,12 +12,14 @@
 
 using namespace std;
 
+// struct
 struct Course {
 	string number;
 	string name;
 	vector<string> prereqs;
 };
 
+// Menu Function
 void DisplayMenu() {
 	cout << endl << "1. Load Data Structure." << endl;
 	cout << "2. Print Course List." << endl;
@@ -26,6 +28,7 @@ void DisplayMenu() {
 	cout << "What would you like to do? ";
 }
 
+// Function to split strings
 vector<string> splitString(string fullString, string del = " ") {
 	vector<string> result;
 	int start = 0;
@@ -42,6 +45,7 @@ vector<string> splitString(string fullString, string del = " ") {
 	return result;
 }
 
+// Load the file into a data structure
 vector<Course> LoadFile(string file) {
 	ifstream courseFile(file);
 
@@ -73,13 +77,14 @@ vector<Course> LoadFile(string file) {
 
 }
 
+// Outputs the course
 void CourseList(Course course) {
 
 	cout << course.number << ", " << course.name << endl;
 
 }
 
-
+// Sorts the courses
 void SortCourseList(vector<Course> &courses) {
 	Course temp;
 
@@ -96,6 +101,7 @@ void SortCourseList(vector<Course> &courses) {
 	}
 }
 
+// Searches for an inputed course, prints course information, including prerequisites
 void PrintCourse(vector<Course> &courses, string courseChoice) {
 	bool courseFound = false;
 
@@ -124,6 +130,7 @@ void PrintCourse(vector<Course> &courses, string courseChoice) {
 	}
 }
 
+// verifies the user inputs a correct choice
 bool GoodInput(char choice) {
 	if (choice != '1' && choice != '2' && choice != '3' && choice != '9') {
 		return true;
